@@ -1,0 +1,29 @@
+<section class="section technologies" id="tecnologias" data-section="<%= ht("sections.stack") %>">
+  <% tech_sequence = capture do %>
+    <% techs.each do |tech| %>
+      <div class="tech-tile">
+        <i class="tech-icon <%= tech_icon_class(tech) %>" aria-hidden="true"></i>
+        <span><%= tech %></span>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="container">
+    <p class="tech-kicker"><%= ht("technologies.kicker") %></p>
+  </div>
+
+  <div
+    class="tech-marquee"
+    aria-hidden="true"
+    data-controller="infinite-marquee"
+    data-infinite-marquee-speed-value="28">
+    <div class="tech-track" data-infinite-marquee-target="track">
+      <div class="marquee-group" data-infinite-marquee-target="content">
+        <%= tech_sequence %>
+      </div>
+      <div class="marquee-group" data-marquee-fallback aria-hidden="true">
+        <%= tech_sequence %>
+      </div>
+    </div>
+  </div>
+</section>

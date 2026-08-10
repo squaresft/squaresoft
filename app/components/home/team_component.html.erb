@@ -1,0 +1,12 @@
+<section class="section team" id="time" data-section="<%= ht("sections.team") %>">
+  <div class="container">
+    <h2 class="section-title"><%= ht("team.title") %></h2>
+    <p class="section-lead"><%= ht("team.lead") %></p>
+
+    <div class="team-grid">
+      <%= render Home::TeamBadgeComponent.with_collection(home_items("team.members")) %>
+    </div>
+
+    <p class="team-count"><%= ht("team.count_html").html_safe %></p>
+  </div>
+</section>

@@ -21,7 +21,8 @@ module Squaresoft
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.i18n.available_locales = %i[pt en es]
+    config.i18n.default_locale = :pt
+    config.i18n.fallbacks = true
   end
 end

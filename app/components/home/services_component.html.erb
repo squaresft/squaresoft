@@ -1,0 +1,19 @@
+<section class="section services" id="servicos" data-section="<%= ht("sections.services") %>">
+  <div class="container">
+    <h2 class="section-title"><%= ht("services.title") %></h2>
+    <p class="section-lead"><%= ht("services.lead") %></p>
+
+    <div class="services-grid">
+      <% home_items("services.items").each do |offer| %>
+        <a href="#contato" class="service-offer">
+          <span class="service-offer-icon" aria-hidden="true">
+            <i class="fa-solid <%= offer["icon"] %>"></i>
+          </span>
+          <h3><%= offer["title"] %></h3>
+          <p><%= offer["body"] %></p>
+          <span class="service-offer-cta"><%= ht("services.cta") %> <span aria-hidden="true">↗</span></span>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</section>

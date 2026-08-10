@@ -1,0 +1,35 @@
+<header class="site-header" data-controller="section-breadcrumb">
+  <div class="container header-inner">
+    <a href="#topo" class="logo" aria-label="Square Soft">
+      <span class="logo-mark" aria-hidden="true">
+        <span class="logo-sq logo-sq--a"></span>
+        <span class="logo-sq logo-sq--b"></span>
+      </span>
+      <span class="logo-text">square<span>soft</span></span>
+    </a>
+
+    <nav class="nav" aria-label="<%= ht("nav.main") %>">
+      <a href="#processo"><%= ht("nav.process") %></a>
+      <a href="#portfolio"><%= ht("nav.portfolio") %></a>
+    </nav>
+
+    <div class="header-actions" data-controller="theme">
+      <%= render Ui::ThemeToggleComponent.new %>
+      <%= render Ui::LanguageSwitcherComponent.new %>
+      <a href="#contato" class="btn btn--primary">
+        <%= ht("nav.talk_expert") %>
+        <span class="btn-icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="header-breadcrumb">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="<%= ht("nav.breadcrumb") %>">
+        <a href="#topo" class="breadcrumb-root">SQUARE</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="breadcrumb-current" data-section-breadcrumb-target="current"><%= ht("nav.breadcrumb_home") %></span>
+      </nav>
+    </div>
+  </div>
+</header>

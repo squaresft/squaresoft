@@ -1,0 +1,39 @@
+<article class="team-badge">
+  <div class="badge-body">
+    <div class="badge-brand">
+      <span class="badge-brand-mark" aria-hidden="true">
+        <span class="logo-sq logo-sq--a"></span>
+        <span class="logo-sq logo-sq--b"></span>
+      </span>
+      <span class="badge-brand-text">square<span>soft</span></span>
+      <span class="badge-id"><%= badge_id %></span>
+    </div>
+
+    <div class="team-photo" aria-hidden="true">
+      <span class="team-photo-initials">
+        <%= initials %>
+      </span>
+    </div>
+
+    <div class="team-info">
+      <p class="badge-label"><%= member["focus"] %></p>
+      <h3><%= member["name"] %></h3>
+      <p class="team-role"><%= member["role"] %></p>
+      <div class="team-socials">
+        <a
+          href="mailto:<%= email %>"
+          class="team-social"
+          aria-label="<%= ht("team.email_aria", name: member["name"]) %>">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+        <a
+          href="<%= member["linkedin"] %>"
+          class="team-social"
+          aria-label="<%= ht("team.linkedin_aria", name: member["name"]) %>"
+          <%= 'target="_blank" rel="noopener noreferrer"' if external_linkedin? %>>
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

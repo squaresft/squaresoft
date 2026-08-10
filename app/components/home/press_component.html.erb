@@ -1,0 +1,33 @@
+<section class="section press" id="imprensa" data-section="<%= ht("sections.press") %>">
+  <div class="container">
+    <h2 class="section-title"><%= ht("press.title") %></h2>
+  </div>
+
+  <% press_items = home_items("press.items") %>
+
+  <% press_sequence = capture do %>
+    <% 3.times do %>
+      <% press_items.each do |item| %>
+        <article class="press-card">
+          <p class="press-outlet"><%= item["outlet"] %></p>
+          <p class="press-title"><%= item["title"] %></p>
+        </article>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <div
+    class="press-marquee"
+    aria-label="<%= ht("press.aria") %>"
+    data-controller="infinite-marquee"
+    data-infinite-marquee-speed-value="28">
+    <div class="press-track" data-infinite-marquee-target="track">
+      <div class="marquee-group" data-infinite-marquee-target="content">
+        <%= press_sequence %>
+      </div>
+      <div class="marquee-group" data-marquee-fallback aria-hidden="true">
+        <%= press_sequence %>
+      </div>
+    </div>
+  </div>
+</section>

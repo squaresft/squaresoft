@@ -1,0 +1,38 @@
+<section class="section portfolio" id="portfolio" data-section="<%= ht("sections.portfolio") %>" data-controller="portfolio">
+  <div class="container">
+    <h2 class="section-title"><%= ht("portfolio.title") %></h2>
+
+    <% projects = self.projects %>
+
+    <div class="portfolio-shell">
+      <button type="button" class="portfolio-nav portfolio-nav--prev" data-action="portfolio#prev" aria-label="<%= ht("portfolio.prev") %>">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M11 4L6 9L11 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="portfolio-viewport">
+        <%= render Home::PortfolioCardComponent.with_collection(projects) %>
+      </div>
+
+      <button type="button" class="portfolio-nav portfolio-nav--next" data-action="portfolio#next" aria-label="<%= ht("portfolio.next") %>">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M7 4L12 9L7 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="portfolio-dots" role="tablist" aria-label="<%= ht("portfolio.projects_aria") %>">
+      <% projects.each_with_index do |_, i| %>
+        <button
+          type="button"
+          class="portfolio-dot<%= " is-active" if i.zero? %>"
+          data-portfolio-target="dot"
+          data-index="<%= i %>"
+          data-action="portfolio#goTo"
+          aria-label="<%= ht("portfolio.go_to", n: i + 1) %>"
+          <%= 'aria-current="true"' if i.zero? %>></button>
+      <% end %>
+    </div>
+  </div>
+</section>

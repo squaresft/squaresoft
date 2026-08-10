@@ -1,0 +1,37 @@
+<section class="hero" id="topo" data-section="<%= ht("sections.home") %>">
+  <div class="hero-bg" aria-hidden="true">
+    <picture>
+      <source type="image/webp" srcset="<%= webp_srcset %>" sizes="100vw">
+      <%= image_tag "hero-team.jpg",
+            class: "hero-photo",
+            alt: "",
+            width: Home::HeroComponent::HERO_WIDTH,
+            height: Home::HeroComponent::HERO_HEIGHT,
+            loading: "eager",
+            decoding: "async",
+            fetchpriority: "high",
+            sizes: "100vw" %>
+    </picture>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-copy">
+      <p class="hero-badge">
+        <span class="hero-badge-icon" aria-hidden="true"></span>
+        <%= ht("hero.badge") %>
+      </p>
+      <h1 class="hero-title">
+        <span class="hero-title-line"><%= ht("hero.title_1") %></span>
+        <span class="hero-title-line text-gradient"><%= ht("hero.title_2") %></span>
+        <span class="hero-title-line text-gradient text-gradient--alt"><%= ht("hero.title_3") %></span>
+      </h1>
+      <p class="hero-lead"><%= ht("hero.lead") %></p>
+      <a href="#contato" class="btn btn--primary btn--lg">
+        <%= ht("hero.cta") %>
+        <span class="btn-icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>

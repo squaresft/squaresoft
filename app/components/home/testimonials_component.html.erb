@@ -1,0 +1,23 @@
+<section class="section testimonials" id="depoimentos" data-section="<%= ht("sections.testimonials") %>">
+  <div class="container">
+    <h2 class="section-title"><%= ht("testimonials.title") %></h2>
+
+    <div class="testimonials-grid">
+      <% home_items("testimonials.items").each_with_index do |item, i| %>
+        <article class="testimonial-card">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <p><%= item["quote"] %></p>
+          <footer class="testimonial-author">
+            <div class="author-avatar" data-tone="<%= i % 3 %>" aria-hidden="true">
+              <%= item["name"].split.map { |p| p[0] }.join.first(2) %>
+            </div>
+            <div>
+              <strong><%= item["name"] %></strong>
+              <span><%= item["role"] %></span>
+            </div>
+          </footer>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+<%= render Home::SeoHeadComponent.new %>
+<div class="site" data-controller="back-to-top">
+  <% cache_component("header") do %>
+    <%= render Home::HeaderComponent.new %>
+  <% end %>
+  <main>
+    <% cache_component("hero") do %>
+      <%= render Home::HeroComponent.new %>
+    <% end %>
+    <% cache_component("services") do %>
+      <%= render Home::ServicesComponent.new %>
+    <% end %>
+    <% cache_component("clients") do %>
+      <%= render Home::ClientsComponent.new %>
+    <% end %>
+    <% cache_component("press") do %>
+      <%= render Home::PressComponent.new %>
+    <% end %>
+    <% cache_component("team") do %>
+      <%= render Home::TeamComponent.new %>
+    <% end %>
+    <% cache_component("differentiate") do %>
+      <%= render Home::DifferentiateComponent.new %>
+    <% end %>
+    <% cache_component("awards") do %>
+      <%= render Home::AwardsComponent.new %>
+    <% end %>
+    <% cache_component("process") do %>
+      <%= render Home::ProcessComponent.new %>
+    <% end %>
+    <% cache_component("portfolio") do %>
+      <%= render Home::PortfolioComponent.new %>
+    <% end %>
+    <% cache_component("testimonials") do %>
+      <%= render Home::TestimonialsComponent.new %>
+    <% end %>
+    <% cache_component("technologies") do %>
+      <%= render Home::TechnologiesComponent.new %>
+    <% end %>
+    <% cache_component("faq") do %>
+      <%= render Home::FaqComponent.new %>
+    <% end %>
+  </main>
+  <% cache_component("footer") do %>
+    <%= render Home::FooterComponent.new %>
+  <% end %>
+  <%= render Ui::BackToTopComponent.new %>
+</div>

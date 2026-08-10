@@ -1,6 +1,8 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require "view_component/test_helpers"
+require "capybara/minitest"
 
 module ActiveSupport
   class TestCase
@@ -12,4 +14,10 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
   end
+end
+
+class ComponentTestCase < ActiveSupport::TestCase
+  include ViewComponent::TestHelpers
+  include Capybara::Minitest::Assertions
+  include Rails.application.routes.url_helpers
 end

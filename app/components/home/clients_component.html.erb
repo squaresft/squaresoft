@@ -1,0 +1,14 @@
+<section class="section clients" id="clientes" data-section="<%= ht("sections.experience") %>">
+  <div class="container clients-layout">
+    <div class="clients-heading-block">
+      <h2 class="clients-heading"><%= ht("clients.title") %></h2>
+      <p class="clients-subhead"><%= ht("clients.subhead") %></p>
+    </div>
+
+    <ul class="clients-grid" aria-label="<%= ht("clients.aria") %>">
+      <% companies.each do |name| %>
+        <li class="client-logo"><span><%= name %></span></li>
+      <% end %>
+    </ul>
+  </div>
+</section>

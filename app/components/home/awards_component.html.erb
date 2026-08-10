@@ -1,0 +1,42 @@
+<section class="section awards" id="premios" data-section="<%= ht("sections.awards") %>">
+  <div class="container">
+    <h2 class="section-title"><%= ht("awards.title") %></h2>
+
+    <div class="stats" data-controller="count-up" data-count-up-duration-value="1400">
+      <div class="stat">
+        <p class="stat-value" data-count-up-target="value" data-count-to="10">10</p>
+        <p class="stat-label"><%= ht("awards.nps") %></p>
+      </div>
+      <div class="stat">
+        <p class="stat-value" data-count-up-target="value" data-count-to="+30">+30</p>
+        <p class="stat-label"><%= ht("awards.certifications") %></p>
+      </div>
+      <div class="stat">
+        <p class="stat-value" data-count-up-target="value" data-count-to="15">15</p>
+        <p class="stat-label"><%= ht("awards.clients_served") %></p>
+      </div>
+    </div>
+
+    <div class="badges">
+      <% badges.each do |badge| %>
+        <div class="badge-circle">
+          <span><%= badge[:label] %></span>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="certs-marquee" aria-hidden="true">
+      <div class="certs-track">
+        <% 2.times do %>
+          <div class="marquee-group">
+            <% 3.times do %>
+              <% certs.each do |cert| %>
+                <span class="cert-pill"><%= cert %></span>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

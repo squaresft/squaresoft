@@ -1,0 +1,25 @@
+<section class="section faq" id="faq" data-section="<%= ht("sections.faq") %>" data-controller="faq">
+  <div class="container faq-layout">
+    <h2 class="section-title faq-title"><%= ht("faq.title") %></h2>
+
+    <div class="faq-list">
+      <% home_items("faq.items").each_with_index do |item, i| %>
+        <div class="faq-item" data-faq-target="item">
+          <button
+            type="button"
+            class="faq-question"
+            data-faq-target="button"
+            data-action="faq#toggle"
+            aria-expanded="false"
+            aria-controls="faq-panel-<%= i %>">
+            <span><%= item["question"] %></span>
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-answer" id="faq-panel-<%= i %>" data-faq-target="panel" hidden>
+            <p><%= item["answer"] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

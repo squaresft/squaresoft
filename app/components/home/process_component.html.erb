@@ -1,0 +1,58 @@
+<section class="section process" id="processo" data-section="<%= ht("sections.process") %>" data-controller="process-tabs">
+  <div class="container">
+    <h2 class="section-title"><%= ht("process.title") %></h2>
+
+    <div class="process-tabs" role="tablist" aria-label="<%= ht("process.tabs_aria") %>">
+      <% home_items("process.tabs").each_with_index do |label, i| %>
+        <button
+          type="button"
+          class="process-tab<%= " is-active" if i.zero? %>"
+          role="tab"
+          aria-selected="<%= i.zero? %>"
+          data-process-tabs-target="tab"
+          data-index="<%= i %>"
+          data-action="process-tabs#select">
+          <span class="process-tab-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M17.5 17.5L23 23" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="process-tab-label"><%= label %></span>
+          <span class="process-tab-bar"></span>
+          <span class="process-tab-num"><%= format("%02d", i + 1) %></span>
+        </button>
+      <% end %>
+    </div>
+
+    <% home_items("process.steps").each_with_index do |step, i| %>
+      <div
+        class="process-panel<%= " is-active" if i.zero? %>"
+        data-process-tabs-target="panel"
+        role="tabpanel"
+        <%= "hidden" unless i.zero? %>>
+        <div class="process-panel-grid">
+          <article class="process-info">
+            <h3><%= step["title"] %></h3>
+            <p><%= step["body"] %></p>
+            <div class="process-meta">
+              <div>
+                <h4><%= ht("process.deliverables") %></h4>
+                <p><%= step["deliverables"] %></p>
+              </div>
+              <div>
+                <h4><%= ht("process.duration") %></h4>
+                <p><%= step["duration"] %></p>
+              </div>
+            </div>
+          </article>
+          <div class="process-photos">
+            <div class="process-photo process-photo--main tone-<%= i %>"></div>
+            <div class="process-photo process-photo--top tone-<%= (i + 1) % 5 %>"></div>
+            <div class="process-photo process-photo--bottom tone-<%= (i + 2) % 5 %>"></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

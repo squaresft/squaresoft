@@ -1,0 +1,153 @@
+<section class="section differentiate" id="diferenciais" data-section="<%= ht("sections.differentiate") %>">
+  <div class="container">
+    <h2 class="section-title"><%= ht("differentiate.title") %></h2>
+    <p class="section-lead"><%= ht("differentiate.lead") %></p>
+
+    <div class="bento">
+      <article class="bento-card bento-card--wide">
+        <div class="bento-copy">
+          <h3><%= cards[0]["title"] %></h3>
+          <p><%= cards[0]["body"] %></p>
+        </div>
+        <div class="story story--flow" aria-hidden="true">
+          <div class="mini-panel">
+            <header><i class="fa-solid fa-pen-ruler"></i> <%= ht("differentiate.labels.wireframe") %></header>
+            <div class="wire">
+              <b></b><b></b>
+              <i></i><i></i><i></i>
+            </div>
+          </div>
+          <span class="story-chevron"><i class="fa-solid fa-chevron-right"></i></span>
+          <div class="mini-panel">
+            <header><i class="fa-solid fa-code"></i> <%= ht("differentiate.labels.code") %></header>
+            <div class="code-lines">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <span class="story-chevron"><i class="fa-solid fa-chevron-right"></i></span>
+          <div class="mini-panel mini-panel--live">
+            <header><i class="fa-solid fa-cloud"></i> <%= ht("differentiate.labels.production") %></header>
+            <div class="live-status">
+              <em></em>
+              <strong><%= ht("differentiate.labels.online") %></strong>
+              <small>v2.4 · 99.9%</small>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bento-card">
+        <div class="bento-copy">
+          <h3><%= cards[1]["title"] %></h3>
+          <p><%= cards[1]["body"] %></p>
+        </div>
+        <div class="story story--cicd" aria-hidden="true">
+          <div class="ci-board">
+            <div class="ci-row is-ok"><i class="fa-solid fa-circle-check"></i><span><%= ht("differentiate.labels.build") %></span><time>42s</time></div>
+            <div class="ci-row is-ok"><i class="fa-solid fa-circle-check"></i><span><%= ht("differentiate.labels.tests") %></span><time>1m</time></div>
+            <div class="ci-row is-run"><i class="fa-solid fa-spinner"></i><span><%= ht("differentiate.labels.deploy") %></span><time><%= ht("differentiate.labels.now") %></time></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bento-card bento-card--tall">
+        <div class="bento-copy">
+          <h3><%= cards[2]["title"] %></h3>
+          <p><%= cards[2]["body"] %></p>
+        </div>
+        <div class="story story--metrics">
+          <div class="kpi-row" aria-hidden="true">
+            <div class="kpi"><strong>1.2s</strong><span><%= ht("differentiate.labels.p95") %></span></div>
+            <div class="kpi"><strong>99.9%</strong><span><%= ht("differentiate.labels.uptime") %></span></div>
+            <div class="kpi kpi--up"><strong>+38%</strong><span><%= ht("differentiate.labels.conversion") %></span></div>
+          </div>
+          <div class="metric-chart" aria-hidden="true">
+            <span style="--h: 35%"></span>
+            <span style="--h: 48%"></span>
+            <span style="--h: 42%"></span>
+            <span style="--h: 68%"></span>
+            <span style="--h: 76%"></span>
+            <span style="--h: 92%"></span>
+          </div>
+          <p class="metric-caption">
+            <%= ht("differentiate.metric_caption_html").html_safe %>
+          </p>
+        </div>
+      </article>
+
+      <article class="bento-card bento-card--quality">
+        <div class="bento-copy">
+          <h3><%= cards[3]["title"] %></h3>
+          <p><%= cards[3]["body"] %></p>
+        </div>
+        <div class="story story--arch" aria-hidden="true">
+          <div class="arch-layer">
+            <i class="fa-solid fa-globe"></i>
+            <div>
+              <strong><%= ht("differentiate.labels.edge") %></strong>
+              <span><%= ht("differentiate.labels.edge_detail") %></span>
+            </div>
+            <em class="arch-dot"></em>
+          </div>
+          <div class="arch-layer">
+            <i class="fa-solid fa-server"></i>
+            <div>
+              <strong><%= ht("differentiate.labels.app_api") %></strong>
+              <span><%= ht("differentiate.labels.app_detail") %></span>
+            </div>
+            <em class="arch-dot"></em>
+          </div>
+          <div class="arch-layer">
+            <i class="fa-solid fa-database"></i>
+            <div>
+              <strong><%= ht("differentiate.labels.data_queue") %></strong>
+              <span><%= ht("differentiate.labels.data_detail") %></span>
+            </div>
+            <em class="arch-dot"></em>
+          </div>
+        </div>
+      </article>
+
+      <article class="bento-card">
+        <div class="bento-copy">
+          <h3><%= cards[4]["title"] %></h3>
+          <p><%= cards[4]["body"] %></p>
+        </div>
+        <div class="story story--loop" aria-hidden="true">
+          <div class="partner-lane">
+            <div class="partner-chip"><%= ht("differentiate.labels.you") %></div>
+            <div class="partner-flow">
+              <span><%= ht("differentiate.labels.brief") %></span>
+              <i class="fa-solid fa-arrows-left-right"></i>
+              <span><%= ht("differentiate.labels.build") %></span>
+              <i class="fa-solid fa-arrows-left-right"></i>
+              <span><%= ht("differentiate.labels.learn") %></span>
+            </div>
+            <div class="partner-chip partner-chip--us"><%= ht("differentiate.labels.square") %></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bento-card">
+        <div class="bento-copy">
+          <h3><%= cards[5]["title"] %></h3>
+          <p><%= cards[5]["body"] %></p>
+        </div>
+        <div class="story story--triad" aria-hidden="true">
+          <div class="stack-card stack-card--design">
+            <span><%= ht("differentiate.labels.discover") %></span>
+            <div class="stack-ui"><b></b><b></b><i></i></div>
+          </div>
+          <div class="stack-card stack-card--build">
+            <span><%= ht("differentiate.labels.construct") %></span>
+            <div class="stack-code"><em></em><em></em><em></em></div>
+          </div>
+          <div class="stack-card stack-card--scale">
+            <span><%= ht("differentiate.labels.measure") %></span>
+            <div class="stack-spark"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

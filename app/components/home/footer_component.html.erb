@@ -1,0 +1,54 @@
+<footer class="site-footer" id="contato" data-section="<%= ht("sections.contact") %>">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#topo" class="logo logo--footer" aria-label="Square Soft">
+        <span class="logo-mark" aria-hidden="true">
+          <span class="logo-sq logo-sq--a"></span>
+          <span class="logo-sq logo-sq--b"></span>
+        </span>
+        <span class="logo-text">square<span>soft</span></span>
+      </a>
+      <p class="footer-tagline"><%= ht("footer.tagline") %></p>
+      <p><%= ht("footer.about") %></p>
+      <div class="footer-social">
+        <p><%= ht("footer.follow") %></p>
+        <ul>
+          <% %w[LinkedIn Facebook Instagram X Youtube].each do |network| %>
+            <li><a href="#"><%= network %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <nav class="footer-links" aria-label="<%= ht("footer.footer_aria") %>">
+      <a href="#portfolio"><%= ht("nav.portfolio") %></a>
+      <a href="#processo"><%= ht("nav.process") %></a>
+      <a href="#"><%= ht("footer.privacy") %></a>
+    </nav>
+
+    <div class="footer-bases">
+      <p class="footer-bases-title"><%= ht("footer.bases_title") %></p>
+      <div class="world-map" role="img" aria-label="<%= ht("footer.map_aria") %>">
+        <%= image_tag "world-map.svg", class: "world-map-img", alt: "", loading: "lazy" %>
+        <span class="map-dot map-dot--br" title="<%= ht("footer.brazil") %>"><span class="map-dot-pulse"></span></span>
+        <span class="map-dot map-dot--us" title="<%= ht("footer.usa") %>"><span class="map-dot-pulse"></span></span>
+        <span class="map-dot map-dot--uk" title="<%= ht("footer.uk") %>"><span class="map-dot-pulse"></span></span>
+      </div>
+      <div class="addresses">
+        <div>
+          <strong><%= ht("footer.brazil") %></strong>
+          <p>Av. Paulista, 302 — São Paulo, SP</p>
+          <p>R. Alceu Amoroso Lima, 440 — Salvador, BA</p>
+        </div>
+        <div>
+          <strong><%= ht("footer.usa") %></strong>
+          <p>1150 NW 72nd Ave, Miami, FL</p>
+        </div>
+        <div>
+          <strong><%= ht("footer.uk") %></strong>
+          <p>14 Church Street, Staines-Upon-Thames</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
