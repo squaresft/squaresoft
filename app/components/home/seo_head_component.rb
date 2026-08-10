@@ -51,7 +51,7 @@ module Home
     def open_graph_tags
       [
         helpers.tag.meta(property: "og:type", content: "website"),
-        helpers.tag.meta(property: "og:site_name", content: "Square Soft"),
+        helpers.tag.meta(property: "og:site_name", content: "SQUARE"),
         helpers.tag.meta(property: "og:title", content: ht("meta.title")),
         helpers.tag.meta(property: "og:description", content: ht("meta.description")),
         helpers.tag.meta(property: "og:url", content: canonical_url),
@@ -75,17 +75,17 @@ module Home
         "@graph" => [
           {
             "@type" => "Organization",
-            "name" => "Square Soft",
+            "name" => "SQUARE",
             "url" => locale_root_url(:pt),
             "logo" => helpers.image_url("hero-team-1200.webp"),
             "description" => ht("meta.description")
           },
           {
             "@type" => "WebSite",
-            "name" => "Square Soft",
+            "name" => "SQUARE",
             "url" => canonical_url,
             "inLanguage" => html_lang_code,
-            "publisher" => { "@type" => "Organization", "name" => "Square Soft" }
+            "publisher" => { "@type" => "Organization", "name" => "SQUARE" }
           }
         ]
       }

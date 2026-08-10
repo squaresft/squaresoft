@@ -11,22 +11,22 @@
         </div>
         <div class="story story--flow" aria-hidden="true">
           <div class="mini-panel">
-            <header><i class="fa-solid fa-pen-ruler"></i> <%= ht("differentiate.labels.wireframe") %></header>
+            <header><%= render Ui::IconComponent.new(name: "pen-ruler") %> <%= ht("differentiate.labels.wireframe") %></header>
             <div class="wire">
               <b></b><b></b>
               <i></i><i></i><i></i>
             </div>
           </div>
-          <span class="story-chevron"><i class="fa-solid fa-chevron-right"></i></span>
+          <span class="story-chevron"><%= render Ui::IconComponent.new(name: "chevron-right") %></span>
           <div class="mini-panel">
-            <header><i class="fa-solid fa-code"></i> <%= ht("differentiate.labels.code") %></header>
+            <header><%= render Ui::IconComponent.new(name: "code") %> <%= ht("differentiate.labels.code") %></header>
             <div class="code-lines">
               <span></span><span></span><span></span><span></span>
             </div>
           </div>
-          <span class="story-chevron"><i class="fa-solid fa-chevron-right"></i></span>
+          <span class="story-chevron"><%= render Ui::IconComponent.new(name: "chevron-right") %></span>
           <div class="mini-panel mini-panel--live">
-            <header><i class="fa-solid fa-cloud"></i> <%= ht("differentiate.labels.production") %></header>
+            <header><%= render Ui::IconComponent.new(name: "cloud") %> <%= ht("differentiate.labels.production") %></header>
             <div class="live-status">
               <em></em>
               <strong><%= ht("differentiate.labels.online") %></strong>
@@ -43,9 +43,9 @@
         </div>
         <div class="story story--cicd" aria-hidden="true">
           <div class="ci-board">
-            <div class="ci-row is-ok"><i class="fa-solid fa-circle-check"></i><span><%= ht("differentiate.labels.build") %></span><time>42s</time></div>
-            <div class="ci-row is-ok"><i class="fa-solid fa-circle-check"></i><span><%= ht("differentiate.labels.tests") %></span><time>1m</time></div>
-            <div class="ci-row is-run"><i class="fa-solid fa-spinner"></i><span><%= ht("differentiate.labels.deploy") %></span><time><%= ht("differentiate.labels.now") %></time></div>
+            <div class="ci-row is-ok"><%= render Ui::IconComponent.new(name: "circle-check") %><span><%= ht("differentiate.labels.build") %></span><time>42s</time></div>
+            <div class="ci-row is-ok"><%= render Ui::IconComponent.new(name: "circle-check") %><span><%= ht("differentiate.labels.tests") %></span><time>1m</time></div>
+            <div class="ci-row is-run"><%= render Ui::IconComponent.new(name: "spinner") %><span><%= ht("differentiate.labels.deploy") %></span><time><%= ht("differentiate.labels.now") %></time></div>
           </div>
         </div>
       </article>
@@ -82,7 +82,7 @@
         </div>
         <div class="story story--arch" aria-hidden="true">
           <div class="arch-layer">
-            <i class="fa-solid fa-globe"></i>
+            <%= render Ui::IconComponent.new(name: "globe") %>
             <div>
               <strong><%= ht("differentiate.labels.edge") %></strong>
               <span><%= ht("differentiate.labels.edge_detail") %></span>
@@ -90,7 +90,7 @@
             <em class="arch-dot"></em>
           </div>
           <div class="arch-layer">
-            <i class="fa-solid fa-server"></i>
+            <%= render Ui::IconComponent.new(name: "server") %>
             <div>
               <strong><%= ht("differentiate.labels.app_api") %></strong>
               <span><%= ht("differentiate.labels.app_detail") %></span>
@@ -98,7 +98,7 @@
             <em class="arch-dot"></em>
           </div>
           <div class="arch-layer">
-            <i class="fa-solid fa-database"></i>
+            <%= render Ui::IconComponent.new(name: "database") %>
             <div>
               <strong><%= ht("differentiate.labels.data_queue") %></strong>
               <span><%= ht("differentiate.labels.data_detail") %></span>
@@ -118,9 +118,9 @@
             <div class="partner-chip"><%= ht("differentiate.labels.you") %></div>
             <div class="partner-flow">
               <span><%= ht("differentiate.labels.brief") %></span>
-              <i class="fa-solid fa-arrows-left-right"></i>
+              <%= render Ui::IconComponent.new(name: "arrows-left-right") %>
               <span><%= ht("differentiate.labels.build") %></span>
-              <i class="fa-solid fa-arrows-left-right"></i>
+              <%= render Ui::IconComponent.new(name: "arrows-left-right") %>
               <span><%= ht("differentiate.labels.learn") %></span>
             </div>
             <div class="partner-chip partner-chip--us"><%= ht("differentiate.labels.square") %></div>

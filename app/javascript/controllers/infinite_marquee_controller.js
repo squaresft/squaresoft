@@ -39,7 +39,6 @@ export default class extends Controller {
     this.motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
     this.motionQuery.addEventListener?.("change", this.onMotionChange)
 
-    // Aguarda layout/fonte antes da 1ª medição
     requestAnimationFrame(() => {
       this.prepare()
       if (!this.reducedMotion) {
@@ -71,7 +70,6 @@ export default class extends Controller {
     const track = this.trackTarget
     const content = this.contentTarget
 
-    // Remove fallback CSS e clones antigos; mantém só o content original
     Array.from(track.children).forEach((child) => {
       if (child !== content) child.remove()
     })
@@ -85,35 +83,27 @@ export default class extends Controller {
       return
     }
 
-    void content.offsetWidth
+    // Batch layout reads after DOM writes settle on the next frame.
+    requestAnimationFrame(() => {
+      const unit = content.getBoundingClientRect().width
+      const viewport = Math.max(this.element.clientWidth, document.documentElement.clientWidth, 1)
 
-    let unit = content.getBoundingClientRect().width
-    if (unit < 1) {
-      requestAnimationFrame(() => this.prepare())
-      return
-    }
+      if (unit < 1) {
+        requestAnimationFrame(() => this.prepare())
+        return
+      }
 
-    const viewport = Math.max(this.element.clientWidth, document.documentElement.clientWidth, 1)
-    const minWidth = viewport * 3
-    let total = unit
-    let guard = 0
+      const clonesNeeded = Math.max(1, Math.ceil((viewport * 3) / unit) - 1)
+      const fragment = document.createDocumentFragment()
+      for (let i = 0; i < clonesNeeded; i += 1) {
+        fragment.appendChild(this.#clone(content))
+      }
+      track.appendChild(fragment)
 
-    while (total < minWidth && guard < 40) {
-      track.appendChild(this.#clone(content))
-      total += unit
-      guard += 1
-    }
-
-    if (track.children.length < 2) {
-      track.appendChild(this.#clone(content))
-    }
-
-    // Recalcula após clones (subpixel / fontes)
-    this.setWidth = content.getBoundingClientRect().width
-    if (this.setWidth < 1) this.setWidth = unit
-
-    this.offset = this.setWidth > 0 ? this.offset % this.setWidth : 0
-    this.#paint()
+      this.setWidth = content.getBoundingClientRect().width || unit
+      this.offset = this.setWidth > 0 ? this.offset % this.setWidth : 0
+      this.#paint()
+    })
   }
 
   #clone(content) {

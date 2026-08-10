@@ -24,14 +24,14 @@
           href="mailto:<%= email %>"
           class="team-social"
           aria-label="<%= ht("team.email_aria", name: member["name"]) %>">
-          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <%= render Ui::IconComponent.new(name: "envelope") %>
         </a>
         <a
           href="<%= member["linkedin"] %>"
           class="team-social"
           aria-label="<%= ht("team.linkedin_aria", name: member["name"]) %>"
           <%= 'target="_blank" rel="noopener noreferrer"' if external_linkedin? %>>
-          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+          <%= render Ui::IconComponent.new(name: "linkedin") %>
         </a>
       </div>
     </div>

@@ -3,12 +3,12 @@
     <span class="flag"><%= locale_flag_svg(I18n.locale) %></span>
     <span class="lang-code"><%= current_locale_option[:code] %></span>
   </summary>
-  <div class="lang-menu-panel" role="listbox" aria-label="<%= ht("nav.language") %>">
+  <div class="lang-menu-panel" role="menu" aria-label="<%= ht("nav.language") %>">
     <% locale_options.each do |option| %>
       <%= link_to locale_root_path(option[:locale]),
             class: "lang-option#{" is-active" if option[:locale] == I18n.locale}",
-            role: "option",
-            aria: { current: (option[:locale] == I18n.locale ? "true" : nil) } do %>
+            role: "menuitem",
+            aria: { current: (option[:locale] == I18n.locale ? "page" : nil) } do %>
         <span class="flag"><%= locale_flag_svg(option[:locale]) %></span>
         <span class="lang-option-meta">
           <span class="lang-code"><%= option[:code] %></span>

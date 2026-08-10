@@ -7,7 +7,7 @@
       <% home_items("services.items").each do |offer| %>
         <a href="#contato" class="service-offer">
           <span class="service-offer-icon" aria-hidden="true">
-            <i class="fa-solid <%= offer["icon"] %>"></i>
+            <%= render Ui::IconComponent.new(name: offer["icon"]) %>
           </span>
           <h3><%= offer["title"] %></h3>
           <p><%= offer["body"] %></p>

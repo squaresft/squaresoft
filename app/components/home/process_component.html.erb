@@ -8,7 +8,9 @@
           type="button"
           class="process-tab<%= " is-active" if i.zero? %>"
           role="tab"
+          id="process-tab-<%= i %>"
           aria-selected="<%= i.zero? %>"
+          aria-controls="process-panel-<%= i %>"
           data-process-tabs-target="tab"
           data-index="<%= i %>"
           data-action="process-tabs#select">
@@ -28,8 +30,10 @@
     <% home_items("process.steps").each_with_index do |step, i| %>
       <div
         class="process-panel<%= " is-active" if i.zero? %>"
+        id="process-panel-<%= i %>"
         data-process-tabs-target="panel"
         role="tabpanel"
+        aria-labelledby="process-tab-<%= i %>"
         <%= "hidden" unless i.zero? %>>
         <div class="process-panel-grid">
           <article class="process-info">
