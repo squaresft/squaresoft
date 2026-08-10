@@ -14,11 +14,12 @@ export default class extends Controller {
     this.raf = null
     this.lastTime = null
     this.paused = false
+    this.preparing = false
     this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
     this.onResize = () => {
       clearTimeout(this.resizeTimer)
-      this.resizeTimer = setTimeout(() => this.prepare(), 80)
+      this.resizeTimer = setTimeout(() => this.prepare(), 120)
     }
     this.onEnter = () => { this.paused = true }
     this.onLeave = () => { this.paused = false; this.lastTime = null }
@@ -39,7 +40,8 @@ export default class extends Controller {
     this.motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
     this.motionQuery.addEventListener?.("change", this.onMotionChange)
 
-    requestAnimationFrame(() => {
+    // Adia setup para depois do first paint — fora do critical path / CLS
+    this.idleHandle = this.#whenIdle(() => {
       this.prepare()
       if (!this.reducedMotion) {
         this.loop = this.loop.bind(this)
@@ -49,7 +51,6 @@ export default class extends Controller {
 
     this.resizeObserver = new ResizeObserver(this.onResize)
     this.resizeObserver.observe(this.element)
-    window.addEventListener("resize", this.onResize)
     this.element.addEventListener("mouseenter", this.onEnter)
     this.element.addEventListener("mouseleave", this.onLeave)
   }
@@ -57,15 +58,20 @@ export default class extends Controller {
   disconnect() {
     cancelAnimationFrame(this.raf)
     clearTimeout(this.resizeTimer)
+    if (this.idleHandle && "cancelIdleCallback" in window) {
+      cancelIdleCallback(this.idleHandle)
+    } else {
+      clearTimeout(this.idleHandle)
+    }
     this.resizeObserver?.disconnect()
-    window.removeEventListener("resize", this.onResize)
     this.element.removeEventListener("mouseenter", this.onEnter)
     this.element.removeEventListener("mouseleave", this.onLeave)
     this.motionQuery?.removeEventListener?.("change", this.onMotionChange)
   }
 
   prepare() {
-    if (!this.hasTrackTarget || !this.hasContentTarget) return
+    if (!this.hasTrackTarget || !this.hasContentTarget || this.preparing) return
+    this.preparing = true
 
     const track = this.trackTarget
     const content = this.contentTarget
@@ -79,31 +85,40 @@ export default class extends Controller {
 
     if (this.reducedMotion) {
       this.offset = 0
+      this.setWidth = 0
       this.#paint()
+      this.preparing = false
       return
     }
 
-    // Batch layout reads after DOM writes settle on the next frame.
-    requestAnimationFrame(() => {
-      const unit = content.getBoundingClientRect().width
-      const viewport = Math.max(this.element.clientWidth, document.documentElement.clientWidth, 1)
+    // Uma única leitura de layout, depois só writes
+    const unit = content.scrollWidth || content.offsetWidth
+    const viewport = this.element.clientWidth || 1
 
-      if (unit < 1) {
-        requestAnimationFrame(() => this.prepare())
-        return
-      }
+    if (unit < 1) {
+      this.preparing = false
+      this.#whenIdle(() => this.prepare())
+      return
+    }
 
-      const clonesNeeded = Math.max(1, Math.ceil((viewport * 3) / unit) - 1)
-      const fragment = document.createDocumentFragment()
-      for (let i = 0; i < clonesNeeded; i += 1) {
-        fragment.appendChild(this.#clone(content))
-      }
-      track.appendChild(fragment)
+    const clonesNeeded = Math.max(1, Math.ceil((viewport * 3) / unit) - 1)
+    const fragment = document.createDocumentFragment()
+    for (let i = 0; i < clonesNeeded; i += 1) {
+      fragment.appendChild(this.#clone(content))
+    }
+    track.appendChild(fragment)
 
-      this.setWidth = content.getBoundingClientRect().width || unit
-      this.offset = this.setWidth > 0 ? this.offset % this.setWidth : 0
-      this.#paint()
-    })
+    this.setWidth = unit
+    this.offset = this.setWidth > 0 ? this.offset % this.setWidth : 0
+    this.#paint()
+    this.preparing = false
+  }
+
+  #whenIdle(callback) {
+    if ("requestIdleCallback" in window) {
+      return requestIdleCallback(callback, { timeout: 1200 })
+    }
+    return setTimeout(callback, 200)
   }
 
   #clone(content) {

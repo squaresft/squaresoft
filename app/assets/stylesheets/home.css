@@ -15,7 +15,7 @@
   --border-strong: rgba(255, 255, 255, 0.12);
   --text: #f5f5f5;
   --text-muted: #c4c4c4;
-  --text-faint: rgba(255, 255, 255, 0.72);
+  --text-faint: rgba(255, 255, 255, 0.82);
   --icon: #ffffff;
   --tag: #ddd6fe;
   /* Paleta inspirada na Frenet: roxo #7B3FF3 + azul #3F83F8 */
@@ -61,7 +61,7 @@
   --border-strong: rgba(12, 0, 90, 0.14);
   --text: #12131a;
   --text-muted: #4a5163;
-  --text-faint: rgba(18, 19, 26, 0.72);
+  --text-faint: rgba(18, 19, 26, 0.78);
   --icon: #1a1b23;
   --tag: #5b21b6;
   --blue: #3F83F8;
@@ -399,10 +399,7 @@ ul {
 }
 
 .logo-text span {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--purple);
   font-weight: 700;
 }
 
@@ -506,7 +503,7 @@ ul {
 
 .lang-label {
   font-size: 0.68rem;
-  opacity: 0.72;
+  color: var(--text-muted);
 }
 
 .lang-code {
@@ -584,7 +581,6 @@ ul {
 .hero-copy {
   max-width: 36rem;
   text-align: left;
-  animation: rise 0.9s ease-out both;
 }
 
 .hero-badge {
@@ -632,18 +628,25 @@ ul {
   display: block;
 }
 
+/* Cores sólidas com contraste AA (text-fill transparente falha no Lighthouse) */
 .text-gradient {
-  background: linear-gradient(90deg, var(--purple) 0%, var(--blue) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #c4b5fd;
+  text-shadow: 0 0 28px rgba(63, 131, 248, 0.28);
 }
 
 .text-gradient--alt {
-  background: linear-gradient(90deg, var(--blue) 0%, var(--purple) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #93c5fd;
+  text-shadow: 0 0 28px rgba(123, 63, 243, 0.22);
+}
+
+[data-theme="light"] .text-gradient {
+  color: #6d28d9;
+  text-shadow: none;
+}
+
+[data-theme="light"] .text-gradient--alt {
+  color: #1d4ed8;
+  text-shadow: none;
 }
 
 .hero-lead {
@@ -872,10 +875,7 @@ ul {
 }
 
 .badge-brand-text span {
-  background: var(--accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--purple);
   font-weight: 700;
 }
 
