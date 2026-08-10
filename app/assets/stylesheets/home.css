@@ -21,6 +21,7 @@
   /* Paleta inspirada na Frenet: roxo #7B3FF3 + azul #3F83F8 */
   --blue: #3F83F8;
   --purple: #7B3FF3;
+  --link: #93c5fd;
   --accent-deep: #0C005A;
   --accent: linear-gradient(90deg, var(--purple) 0%, var(--blue) 100%);
   --accent-soft: linear-gradient(90deg, rgba(123, 63, 243, 0.22) 0%, rgba(63, 131, 248, 0.22) 100%);
@@ -66,6 +67,7 @@
   --tag: #5b21b6;
   --blue: #3F83F8;
   --purple: #7B3FF3;
+  --link: #1d4ed8;
   --accent-deep: #0C005A;
   --accent: linear-gradient(90deg, var(--purple) 0%, var(--blue) 100%);
   --accent-soft: linear-gradient(90deg, rgba(123, 63, 243, 0.12) 0%, rgba(63, 131, 248, 0.12) 100%);
@@ -189,6 +191,7 @@ ul {
   min-height: 12rem;
   padding: 1.35rem 1.2rem 1.2rem;
   background: var(--bg-elevated);
+  color: var(--text);
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
@@ -225,7 +228,7 @@ ul {
 
 .service-offer-cta {
   margin-top: 0.5rem;
-  color: var(--blue);
+  color: var(--link);
   font-size: 0.88rem;
   font-weight: 600;
 }
@@ -784,7 +787,7 @@ ul {
 
 .press-outlet {
   margin: 0 0 0.6rem;
-  color: var(--blue);
+  color: var(--link);
   font-weight: 700;
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -1589,6 +1592,7 @@ ul {
   font-size: 0.85rem;
   text-align: center;
   font-weight: 500;
+  color: inherit;
 }
 
 .process-tab-bar {
@@ -1610,12 +1614,12 @@ ul {
   font-size: 2rem;
   font-weight: 800;
   color: var(--text);
-  opacity: 0.08;
+  opacity: 0.14;
   pointer-events: none;
 }
 
 [data-theme="light"] .process-tab-num {
-  opacity: 0.12;
+  opacity: 0.18;
 }
 
 .process-tab.is-active,
@@ -1627,10 +1631,6 @@ ul {
   color: var(--blue);
   filter: drop-shadow(0 0 10px rgba(123, 63, 243, 0.35));
   opacity: 1;
-}
-
-[data-theme="light"] .process-tab:not(.is-active) {
-  color: rgba(18, 19, 26, 0.55);
 }
 
 .process-tab.is-active .process-tab-bar {
