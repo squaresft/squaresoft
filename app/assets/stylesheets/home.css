@@ -17,7 +17,7 @@
   --text-muted: #c4c4c4;
   --text-faint: rgba(255, 255, 255, 0.72);
   --icon: #ffffff;
-  --tag: #CBC2F9;
+  --tag: #ddd6fe;
   /* Paleta inspirada na Frenet: roxo #7B3FF3 + azul #3F83F8 */
   --blue: #3F83F8;
   --purple: #7B3FF3;
@@ -594,10 +594,16 @@ ul {
   margin: 0 0 1.5rem;
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #f0f0f0;
   font-size: 0.88rem;
+}
+
+[data-theme="light"] .hero-badge {
+  background: rgba(18, 19, 26, 0.06);
+  border-color: rgba(18, 19, 26, 0.12);
+  color: #1f2430;
 }
 
 .hero-badge strong {
@@ -1570,12 +1576,12 @@ ul {
   align-items: center;
   gap: 0.55rem;
   padding: 1rem 0.5rem 1.25rem;
-  color: var(--text-faint);
+  color: var(--text-muted);
   transition: color 0.2s ease;
 }
 
 .process-tab-icon {
-  opacity: 0.85;
+  opacity: 0.9;
   color: inherit;
 }
 
@@ -2133,11 +2139,26 @@ ul {
 }
 
 .tech-tile .tech-icon,
-.tech-list i[class*="devicon"] {
-  font-size: 1.35rem;
-  line-height: 1;
-  color: var(--icon) !important;
-  opacity: 0.8;
+.tech-icons .tech-icon,
+.platform-tech-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  object-fit: contain;
+  display: inline-grid;
+  place-items: center;
+  color: var(--icon);
+}
+
+.tech-icon--svg svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+}
+
+.tech-tile .tech-icon,
+.tech-tile .tech-icon--svg svg {
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .tech-icon--mono {
@@ -2166,10 +2187,6 @@ ul {
   display: block;
   width: 1em;
   height: 1em;
-}
-
-.tech-list i[class*="devicon"] {
-  font-size: 0.95rem;
 }
 
 /* Testimonials */

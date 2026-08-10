@@ -2,7 +2,7 @@
   <% tech_sequence = capture do %>
     <% techs.each do |tech| %>
       <div class="tech-tile">
-        <i class="tech-icon <%= tech_icon_class(tech) %>" aria-hidden="true"></i>
+        <%= render Ui::TechIconComponent.new(name: tech) %>
         <span><%= tech %></span>
       </div>
     <% end %>
