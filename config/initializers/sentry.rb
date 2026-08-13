@@ -13,17 +13,17 @@ if ENV["SENTRY_DSN"].present?
 
     config.release = ENV["SENTRY_RELEASE"].presence || ENV["RENDER_GIT_COMMIT"].presence
 
-    filter_exceptions = [
-      ActionController::RoutingError,
-      ActionController::InvalidAuthenticityToken,
+    filtered_exceptions = %w[
+      ActionController::RoutingError
+      ActionController::InvalidAuthenticityToken
       ActiveRecord::RecordNotFound
     ]
 
-    config.excluded_exceptions += filter_exceptions.map(&:name)
+    config.excluded_exceptions += filtered_exceptions
 
     config.before_send = lambda do |event, hint|
       exception = hint[:exception]
-      next nil if exception && filter_exceptions.any? { |klass| exception.is_a?(klass) }
+      next nil if exception && filtered_exceptions.include?(exception.class.name)
 
       event
     end
