@@ -2912,6 +2912,23 @@ ul {
   box-shadow: 0 1px 0 0 var(--purple);
 }
 
+.contact-flow-textarea {
+  min-height: 8rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.35rem;
+  padding: 0.85rem 0.95rem;
+  background: rgba(255, 255, 255, 0.02);
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  box-shadow: none;
+}
+
+.contact-flow-textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 1px rgba(123, 63, 243, 0.45);
+}
+
 .contact-flow-counter {
   margin: 0;
   font-size: 0.78rem;

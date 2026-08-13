@@ -307,6 +307,9 @@ en:
         company:
           question: "What's your company or project name?"
           placeholder: "e.g., Acme Corp"
+        project:
+          question: "Tell us more about the project you want to build."
+          placeholder: "Context, goals, key features..."
         platforms:
           question: "Which platforms are we building for?"
         inspirations:

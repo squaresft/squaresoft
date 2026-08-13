@@ -12,6 +12,8 @@ RSpec.describe Lead, type: :model do
   it { is_expected.to validate_length_of(:phone).is_at_most(40) }
   it { is_expected.to validate_presence_of(:company_name) }
   it { is_expected.to validate_length_of(:company_name).is_at_most(100) }
+  it { is_expected.to validate_presence_of(:project_description) }
+  it { is_expected.to validate_length_of(:project_description).is_at_most(2000) }
   it { is_expected.to validate_presence_of(:platforms) }
   it { is_expected.to validate_presence_of(:kickoff) }
   it { is_expected.to validate_inclusion_of(:kickoff).in_array(Lead::KICKOFFS) }

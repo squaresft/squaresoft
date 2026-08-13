@@ -19,6 +19,7 @@ class LeadsController < ApplicationController
       :email,
       :phone,
       :company_name,
+      :project_description,
       :inspirations,
       :has_design,
       :kickoff,

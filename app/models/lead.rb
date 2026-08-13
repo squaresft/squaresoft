@@ -10,6 +10,7 @@ class Lead < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :phone, presence: true, length: { maximum: 40 }
   validates :company_name, presence: true, length: { maximum: 100 }
+  validates :project_description, presence: true, length: { maximum: 2000 }
   validates :platforms, presence: true
   validates :kickoff, presence: true, inclusion: { in: KICKOFFS }
   validates :budget, presence: true, inclusion: { in: BUDGETS }

@@ -6,6 +6,7 @@ FactoryBot.define do
     email { FFaker::Internet.unique.email }
     phone { FFaker::PhoneNumberBR.phone_number }
     company_name { FFaker::Company.name }
+    project_description { FFaker::Lorem.paragraph }
     platforms { %w[web] }
     inspirations { FFaker::Internet.http_url }
     has_design { false }

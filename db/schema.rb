@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_13_003747) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_13_023625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_13_003747) do
     t.string "locale", default: "pt", null: false
     t.string "phone", null: false
     t.jsonb "platforms", default: [], null: false
+    t.text "project_description"
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_leads_on_created_at"
     t.index ["email"], name: "index_leads_on_email"

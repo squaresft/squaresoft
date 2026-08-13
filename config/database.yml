@@ -87,20 +87,22 @@ test:
 production:
   primary: &primary_production
     <<: *default
+    <% if ENV["DATABASE_URL"].present? %>
+    url: <%= ENV["DATABASE_URL"] %>
+    <% else %>
     host: <%= ENV["DATABASE_HOST"] %>
-    port: <%= ENV["DATABASE_PORT"] %>
+    port: <%= ENV.fetch("DATABASE_PORT", 5432) %>
     database: <%= ENV["DATABASE_NAME"] %>
     username: <%= ENV["DATABASE_USERNAME"] %>
     password: <%= ENV["DATABASE_PASSWORD"] %>
+    <% end %>
+  # Render usually provides a single Postgres. Share it for Solid Cache/Queue/Cable.
   cache:
     <<: *primary_production
-    database: squaresoft_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: squaresoft_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: squaresoft_production_cable
     migrations_paths: db/cable_migrate

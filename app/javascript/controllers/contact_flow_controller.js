@@ -19,7 +19,7 @@ export default class extends Controller {
 
   static values = {
     createUrl: String,
-    totalSteps: { type: Number, default: 9 }
+    totalSteps: { type: Number, default: 10 }
   }
 
   connect() {
@@ -30,6 +30,7 @@ export default class extends Controller {
       email: "",
       phone: "",
       company_name: "",
+      project_description: "",
       platforms: [],
       inspirations: "",
       has_design: null,
@@ -47,7 +48,7 @@ export default class extends Controller {
 
   #onInput = (event) => {
     const step = this.currentStep
-    if (!step || !event.target.matches?.("input")) return
+    if (!step || !event.target.matches?.("input, textarea")) return
     this.updateCounter(step)
     this.clearError(step)
   }
@@ -159,8 +160,8 @@ export default class extends Controller {
     const field = step.dataset.field
     const type = step.dataset.type
 
-    if (type === "text" || type === "email") {
-      const input = step.querySelector("input")
+    if (type === "text" || type === "email" || type === "textarea") {
+      const input = step.querySelector("input, textarea")
       this.formData[field] = (input?.value || "").trim()
     }
   }
@@ -175,8 +176,8 @@ export default class extends Controller {
 
     this.clearError(step)
 
-    if (type === "text" || type === "email") {
-      const input = step.querySelector("input")
+    if (type === "text" || type === "email" || type === "textarea") {
+      const input = step.querySelector("input, textarea")
       const value = (input?.value || "").trim()
       if (required && !value) {
         this.showError(step, this.#uiMessage("required"))
@@ -321,7 +322,7 @@ export default class extends Controller {
 
     this.restoreStepUI()
     const step = this.currentStep
-    const input = step?.querySelector("input")
+    const input = step?.querySelector("input, textarea")
     if (input) {
       input.focus({ preventScroll: true })
       this.updateCounter(step)
@@ -335,8 +336,8 @@ export default class extends Controller {
     const field = step.dataset.field
     const type = step.dataset.type
 
-    if (type === "text" || type === "email") {
-      const input = step.querySelector("input")
+    if (type === "text" || type === "email" || type === "textarea") {
+      const input = step.querySelector("input, textarea")
       if (input) input.value = this.formData[field] || ""
       return
     }
@@ -365,7 +366,7 @@ export default class extends Controller {
 
   updateCounter(step) {
     if (!step) return
-    const input = step.querySelector("input")
+    const input = step.querySelector("input, textarea")
     const counter = step.querySelector("[data-contact-flow-target='counter']")
     if (!input || !counter) return
     counter.textContent = String((input.value || "").length)

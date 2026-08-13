@@ -307,6 +307,9 @@ es:
         company:
           question: "¿Cuál es el nombre de la empresa o del proyecto?"
           placeholder: "ej.: Acme Corp"
+        project:
+          question: "Cuéntanos más sobre el proyecto que quieres desarrollar."
+          placeholder: "Contexto, objetivo, funcionalidades principales..."
         platforms:
           question: "¿Para qué plataformas vamos a construir?"
         inspirations:
