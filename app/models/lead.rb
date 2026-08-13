@@ -20,5 +20,8 @@ class Lead < ApplicationRecord
 
   def send_received_email
     LeadMailer.with(lead: self).received.deliver_later
+  rescue StandardError => error
+    Rails.logger.error("[LeadMailer] enqueue failed for lead=#{id}: #{error.class}: #{error.message}")
+    Sentry.capture_exception(error, extra: { lead_id: id, email: email, locale: locale }) if Sentry.initialized?
   end
 end

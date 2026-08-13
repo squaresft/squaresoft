@@ -1,0 +1,37 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Ajuste name/repo conforme o serviço no Render Dashboard.
+services:
+  - type: web
+    name: squaresoft
+    runtime: ruby
+    plan: starter
+    buildCommand: bundle install && bundle exec rails assets:precompile && bundle exec rails db:migrate
+    startCommand: bundle exec puma -C config/puma.rb
+    healthCheckPath: /up
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: squaresoft-db
+          property: connectionString
+      - key: APP_HOST
+        value: squaresoft.com.br
+      - key: MAILER_FROM
+        value: SQUARE <hello@squaresoft.com.br>
+      - key: RESEND_API_KEY
+        sync: false
+      - key: SENTRY_DSN
+        sync: false
+      - key: SENTRY_DSN_JS
+        sync: false
+      - key: SENTRY_TRACES_SAMPLE_RATE
+        value: "0.1"
+      - key: SOLID_QUEUE_IN_PUMA
+        value: "true"
+
+databases:
+  - name: squaresoft-db
+    plan: basic-256mb

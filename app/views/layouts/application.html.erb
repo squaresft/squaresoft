@@ -11,6 +11,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <% if (sentry_dsn_js = ENV["SENTRY_DSN_JS"].presence) %>
+      <%= tag.meta name: "sentry-dsn", content: sentry_dsn_js %>
+      <%= tag.meta name: "sentry-environment", content: Rails.env %>
+      <%= tag.meta name: "sentry-traces-sample-rate", content: ENV.fetch("SENTRY_TRACES_SAMPLE_RATE", "0.1") %>
+      <% if (sentry_release = ENV["SENTRY_RELEASE"].presence || ENV["RENDER_GIT_COMMIT"].presence) %>
+        <%= tag.meta name: "sentry-release", content: sentry_release %>
+      <% end %>
+    <% end %>
+
     <script>
       (() => {
         try {
