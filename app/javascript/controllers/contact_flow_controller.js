@@ -278,6 +278,8 @@ export default class extends Controller {
       step.classList.remove("is-active")
     })
     if (this.hasActionsTarget) this.actionsTarget.hidden = true
+    if (this.hasBackTarget) this.backTarget.hidden = true
+    if (this.hasNextTarget) this.nextTarget.hidden = true
     if (this.hasSuccessTarget) {
       this.successTarget.hidden = false
       this.successTarget.classList.add("is-active")
@@ -297,6 +299,7 @@ export default class extends Controller {
       this.successTarget.classList.remove("is-active")
     }
     if (this.hasActionsTarget) this.actionsTarget.hidden = false
+    if (this.hasNextTarget) this.nextTarget.hidden = false
 
     const pct = ((this.index + 1) / this.totalStepsValue) * 100
     if (this.hasProgressTarget) this.progressTarget.style.height = `${pct}%`

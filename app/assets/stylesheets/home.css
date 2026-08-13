@@ -3027,6 +3027,12 @@ ul {
   padding-top: 0.15rem;
 }
 
+.contact-flow-actions[hidden],
+.contact-flow-back[hidden],
+.contact-flow-next[hidden] {
+  display: none !important;
+}
+
 .contact-flow-back {
   display: inline-flex;
   align-items: center;
