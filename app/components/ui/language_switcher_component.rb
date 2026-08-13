@@ -17,11 +17,7 @@ module Ui
     end
 
     def locale_root_path(locale = I18n.locale)
-      if locale.to_sym == I18n.default_locale
-        helpers.root_path(locale: nil)
-      else
-        helpers.root_path(locale: locale)
-      end
+      helpers.path_for_locale(locale)
     end
 
     def locale_flag_svg(locale)

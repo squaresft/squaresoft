@@ -10,8 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 0) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_13_003747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "leads", force: :cascade do |t|
+    t.string "budget", null: false
+    t.string "company_name", null: false
+    t.datetime "created_at", null: false
+    t.string "email", null: false
+    t.string "full_name", null: false
+    t.boolean "has_design", default: false, null: false
+    t.text "inspirations"
+    t.string "kickoff", null: false
+    t.string "locale", default: "pt", null: false
+    t.string "phone", null: false
+    t.jsonb "platforms", default: [], null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_leads_on_created_at"
+    t.index ["email"], name: "index_leads_on_email"
+  end
 end

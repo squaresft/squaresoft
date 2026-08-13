@@ -286,6 +286,73 @@ es:
           answer: "Sí. Ofrecemos soporte y mantenimiento post-lanzamiento para asegurar rendimiento, seguridad y evolución continua del producto."
         - question: "¿Cómo garantiza Square Soft la seguridad del software que construye?"
           answer: "Seguimos las mejores prácticas de la industria, realizamos evaluaciones de seguridad e implementamos medidas robustas para proteger tu aplicación contra amenazas."
+    contact:
+      meta_title: "Habla con un experto — SQUARE"
+      required: "Obligatorio"
+      optional: "Opcional"
+      back: "Atrás"
+      next: "Siguiente"
+      finish: "Enviar"
+      brand_note: "SQUARE — Digital Product Studio"
+      steps:
+        name:
+          question: "¿Cuál es tu nombre completo?"
+          placeholder: "Nombre y apellido"
+        email:
+          question: "¿Cuál es el mejor email para contactarte?"
+          placeholder: "ejemplo@email.com"
+        phone:
+          question: "¿Y tu número de teléfono?"
+          placeholder: "(11) 99999-0000"
+        company:
+          question: "¿Cuál es el nombre de la empresa o del proyecto?"
+          placeholder: "ej.: Acme Corp"
+        platforms:
+          question: "¿Para qué plataformas vamos a construir?"
+        inspirations:
+          question: "¿Tienes referencias? Comparte links de sistemas similares."
+          placeholder: "Pega URLs de apps o sitios que te gusten"
+        design:
+          question: "¿Ya tienes un diseño o prototipo listo?"
+        kickoff:
+          question: "¿Cuándo quieres iniciar el desarrollo?"
+        budget:
+          question: "¿Cuál es el presupuesto estimado para este proyecto?"
+      options:
+        platforms:
+          web: "Web"
+          desktop: "Desktop"
+          ios: "iOS"
+          android: "Android"
+          iot: "IoT"
+          other: "Otro"
+        design:
+          "yes": "Sí"
+          "no": "No"
+        kickoffs:
+          immediately: "Inmediatamente"
+          within_1_month: "En 1 mes"
+          within_3_months: "En 3 meses"
+          within_6_months: "En 6 meses"
+          no_start_date: "Sin fecha de inicio"
+        budgets:
+          up_to_20k: "Hasta US$ 20k (R$ 100 mil)"
+          20k_50k: "US$ 20k – 50k (R$ 100–250 mil)"
+          50k_100k: "US$ 50k – 100k (R$ 250–500 mil)"
+          100k_200k: "US$ 100k – 200k (R$ 500 mil–1 mi)"
+          200k_500k: "US$ 200k – 500k (R$ 1–2,5 mi)"
+          500k_1m: "US$ 500k – 1M (R$ 2,5–5 mi)"
+          over_1m: "Más de US$ 1M (R$ 5 mi+)"
+      errors:
+        required: "Completa este campo para continuar."
+        email: "Ingresa un correo electrónico válido."
+        platforms: "Selecciona al menos una plataforma."
+        choice: "Selecciona una opción para continuar."
+        submit: "No se pudo enviar. Inténtalo de nuevo."
+      success:
+        title: "¡Todo listo!"
+        body: "Tu solicitud se envió con éxito. Un especialista revisará los requisitos y te contactará por email o WhatsApp en un día hábil."
+        cta: "Volver al inicio"
     footer:
       tagline: "Digital Product Studio"
       about: "We design. We build. We scale. Un estudio de producto digital — no una software house genérica."

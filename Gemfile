@@ -53,8 +53,12 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  # Omakase Ruby styling [https://github.com/rubocop-hq/rubocop-rails-omakase]
   gem "rubocop-rails-omakase", require: false
+
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "ffaker"
 end
 
 group :development do
@@ -66,4 +70,10 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "shoulda-matchers"
+  gem "database_cleaner-active_record"
 end
+
+gem "letter_opener", "~> 1.10", group: :development
+
+gem "resend", "~> 1.7"

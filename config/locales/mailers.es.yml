@@ -1,0 +1,12 @@
+es:
+  lead_mailer:
+    received:
+      subject: "Recibimos tu solicitud, %{name}"
+      eyebrow: "Solicitud recibida"
+      greeting: "Hola, %{name}."
+      intro: "Recibimos tu solicitud con éxito. Gracias por confiar en SQUARE para el próximo paso de tu producto."
+      body: "Nuestro equipo ya está analizando los requisitos que compartiste y, en breve, te contactaremos con un presupuesto alineado al alcance y a las prioridades del proyecto."
+      closing: "Si necesitas complementar alguna información mientras tanto, responde este correo."
+      signoff: "Hasta pronto,"
+      team: "Equipo SQUARE"
+      copyright: "© %{year} SQUARE. Todos los derechos reservados."

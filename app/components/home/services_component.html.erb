@@ -5,7 +5,7 @@
 
     <div class="services-grid">
       <% home_items("services.items").each do |offer| %>
-        <a href="#contato" class="service-offer">
+        <a href="<%= helpers.contact_path %>" class="service-offer">
           <span class="service-offer-icon" aria-hidden="true">
             <%= render Ui::IconComponent.new(name: offer["icon"]) %>
           </span>

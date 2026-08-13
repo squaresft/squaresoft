@@ -1,0 +1,216 @@
+<div
+  class="contact-flow"
+  data-controller="contact-flow"
+  data-contact-flow-create-url-value="<%= leads_url %>"
+  data-contact-flow-total-steps-value="9"
+  data-msg-required="<%= ht("contact.errors.required") %>"
+  data-msg-email="<%= ht("contact.errors.email") %>"
+  data-msg-platforms="<%= ht("contact.errors.platforms") %>"
+  data-msg-choice="<%= ht("contact.errors.choice") %>"
+  data-msg-submit="<%= ht("contact.errors.submit") %>"
+  data-label-next="<%= ht("contact.next") %>"
+  data-label-finish="<%= ht("contact.finish") %>">
+  <a href="<%= home_url %>" class="contact-flow-brand" aria-label="SQUARE">
+    <span class="logo-mark" aria-hidden="true">
+      <span class="logo-sq logo-sq--a"></span>
+      <span class="logo-sq logo-sq--b"></span>
+    </span>
+    <span class="logo-text">square</span>
+  </a>
+
+  <div class="contact-flow-shell" data-contact-flow-target="shell">
+    <div class="contact-flow-card" data-contact-flow-target="card">
+      <div class="contact-flow-progress" aria-hidden="true">
+        <div class="contact-flow-progress-bar" data-contact-flow-target="progress"></div>
+      </div>
+
+      <div class="contact-flow-steps">
+        <div class="contact-flow-step is-active" data-contact-flow-target="step" data-step="0" data-type="text" data-field="full_name" data-required="true" data-max="100">
+          <p class="contact-flow-required"><%= ht("contact.required") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.name.question") %></h1>
+          <label class="visually-hidden" for="lead-full-name"><%= ht("contact.steps.name.question") %></label>
+          <input
+            id="lead-full-name"
+            class="contact-flow-input"
+            type="text"
+            name="full_name"
+            maxlength="100"
+            autocomplete="name"
+            placeholder="<%= ht("contact.steps.name.placeholder") %>"
+            data-contact-flow-target="input"
+            data-action="keydown.enter->contact-flow#next">
+          <p class="contact-flow-counter"><span data-contact-flow-target="counter">0</span>/100</p>
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step" data-contact-flow-target="step" data-step="1" data-type="email" data-field="email" data-required="true" hidden>
+          <p class="contact-flow-required"><%= ht("contact.required") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.email.question") %></h1>
+          <label class="visually-hidden" for="lead-email"><%= ht("contact.steps.email.question") %></label>
+          <input
+            id="lead-email"
+            class="contact-flow-input"
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder="<%= ht("contact.steps.email.placeholder") %>"
+            data-contact-flow-target="input"
+            data-action="keydown.enter->contact-flow#next">
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step" data-contact-flow-target="step" data-step="2" data-type="text" data-field="phone" data-required="true" data-max="40" hidden>
+          <p class="contact-flow-required"><%= ht("contact.required") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.phone.question") %></h1>
+          <label class="visually-hidden" for="lead-phone"><%= ht("contact.steps.phone.question") %></label>
+          <input
+            id="lead-phone"
+            class="contact-flow-input"
+            type="tel"
+            name="phone"
+            inputmode="numeric"
+            autocomplete="tel"
+            placeholder="<%= ht("contact.steps.phone.placeholder") %>"
+            data-contact-flow-target="input"
+            data-mask="phone"
+            data-action="input->contact-flow#maskPhone keydown.enter->contact-flow#next">
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step" data-contact-flow-target="step" data-step="3" data-type="text" data-field="company_name" data-required="true" data-max="100" hidden>
+          <p class="contact-flow-required"><%= ht("contact.required") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.company.question") %></h1>
+          <label class="visually-hidden" for="lead-company"><%= ht("contact.steps.company.question") %></label>
+          <input
+            id="lead-company"
+            class="contact-flow-input"
+            type="text"
+            name="company_name"
+            maxlength="100"
+            autocomplete="organization"
+            placeholder="<%= ht("contact.steps.company.placeholder") %>"
+            data-contact-flow-target="input"
+            data-action="keydown.enter->contact-flow#next">
+          <p class="contact-flow-counter"><span data-contact-flow-target="counter">0</span>/100</p>
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step" data-contact-flow-target="step" data-step="4" data-type="multi" data-field="platforms" data-required="true" hidden>
+          <p class="contact-flow-required"><%= ht("contact.required") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.platforms.question") %></h1>
+          <div class="contact-flow-platforms" role="group" aria-label="<%= ht("contact.steps.platforms.question") %>">
+            <% platform_options.each do |option| %>
+              <button
+                type="button"
+                class="contact-flow-platform"
+                data-value="<%= option[:value] %>"
+                data-action="contact-flow#toggleOption"
+                aria-pressed="false">
+                <span class="contact-flow-platform-icon" aria-hidden="true"><%= platform_icon_svg(option[:icon]) %></span>
+                <span class="contact-flow-platform-label"><%= option[:label] %></span>
+              </button>
+            <% end %>
+          </div>
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step" data-contact-flow-target="step" data-step="5" data-type="text" data-field="inspirations" data-required="false" hidden>
+          <p class="contact-flow-optional"><%= ht("contact.optional") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.inspirations.question") %></h1>
+          <label class="visually-hidden" for="lead-inspirations"><%= ht("contact.steps.inspirations.question") %></label>
+          <input
+            id="lead-inspirations"
+            class="contact-flow-input"
+            type="text"
+            name="inspirations"
+            placeholder="<%= ht("contact.steps.inspirations.placeholder") %>"
+            data-contact-flow-target="input"
+            data-action="keydown.enter->contact-flow#next">
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step" data-contact-flow-target="step" data-step="6" data-type="single" data-field="has_design" data-required="true" hidden>
+          <p class="contact-flow-required"><%= ht("contact.required") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.design.question") %></h1>
+          <div class="contact-flow-options" role="radiogroup" aria-label="<%= ht("contact.steps.design.question") %>">
+            <% design_options.each do |option| %>
+              <button
+                type="button"
+                class="contact-flow-option contact-flow-option--radio"
+                data-value="<%= option[:value] %>"
+                data-action="contact-flow#selectOption"
+                aria-pressed="false">
+                <span class="contact-flow-radio" aria-hidden="true"></span>
+                <span><%= option[:label] %></span>
+              </button>
+            <% end %>
+          </div>
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step" data-contact-flow-target="step" data-step="7" data-type="single" data-field="kickoff" data-required="true" hidden>
+          <p class="contact-flow-required"><%= ht("contact.required") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.kickoff.question") %></h1>
+          <div class="contact-flow-options" role="radiogroup" aria-label="<%= ht("contact.steps.kickoff.question") %>">
+            <% kickoff_options.each do |option| %>
+              <button
+                type="button"
+                class="contact-flow-option contact-flow-option--radio"
+                data-value="<%= option[:value] %>"
+                data-action="contact-flow#selectOption"
+                aria-pressed="false">
+                <span class="contact-flow-radio" aria-hidden="true"></span>
+                <span><%= option[:label] %></span>
+              </button>
+            <% end %>
+          </div>
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step" data-contact-flow-target="step" data-step="8" data-type="single" data-field="budget" data-required="true" hidden>
+          <p class="contact-flow-required"><%= ht("contact.required") %></p>
+          <h1 class="contact-flow-question"><%= ht("contact.steps.budget.question") %></h1>
+          <div class="contact-flow-options" role="radiogroup" aria-label="<%= ht("contact.steps.budget.question") %>">
+            <% budget_options.each do |option| %>
+              <button
+                type="button"
+                class="contact-flow-option contact-flow-option--radio"
+                data-value="<%= option[:value] %>"
+                data-action="contact-flow#selectOption"
+                aria-pressed="false">
+                <span class="contact-flow-radio" aria-hidden="true"></span>
+                <span><%= option[:label] %></span>
+              </button>
+            <% end %>
+          </div>
+          <p class="contact-flow-error" data-contact-flow-target="error" hidden></p>
+        </div>
+
+        <div class="contact-flow-step contact-flow-step--success" data-contact-flow-target="success" hidden>
+          <div class="contact-flow-success-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 20.5L17.5 26L28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h1 class="contact-flow-question"><%= ht("contact.success.title") %></h1>
+          <p class="contact-flow-success-body"><%= ht("contact.success.body") %></p>
+          <a href="<%= home_url %>" class="btn btn--primary contact-flow-home"><%= ht("contact.success.cta") %></a>
+        </div>
+      </div>
+
+      <div class="contact-flow-actions" data-contact-flow-target="actions">
+        <button type="button" class="contact-flow-back" data-contact-flow-target="back" data-action="contact-flow#back" hidden>
+          <span class="contact-flow-back-chevron" aria-hidden="true">&lt;</span>
+          <%= ht("contact.back") %>
+        </button>
+        <button type="button" class="btn btn--primary contact-flow-next" data-contact-flow-target="next" data-action="contact-flow#next">
+          <span data-contact-flow-target="nextLabel"><%= ht("contact.next") %></span>
+          <span class="contact-flow-next-chevron" data-contact-flow-target="nextChevron" aria-hidden="true">&gt;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p class="contact-flow-footer-note"><%= ht("contact.brand_note") %></p>
+</div>
