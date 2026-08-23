@@ -76,7 +76,7 @@ end
 
 gem "letter_opener", "~> 1.10", group: :development
 
-gem "resend", "~> 1.7"
+gem "resend", "~> 1.9"
 
 gem "sentry-ruby", "~> 6.7"
 gem "sentry-rails", "~> 6.7"
